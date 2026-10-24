@@ -8,6 +8,7 @@ Each src/*.html file starts with front matter lines:
     ---
 followed by the page's <main> content.
 """
+import re
 from pathlib import Path
 
 ROOT = Path(__file__).parent
@@ -39,6 +40,9 @@ def render(name: str, text: str) -> str:
     page = page.replace("{{nav}}", nav_items)
     page = page.replace("{{footer}}", partial("footer.html"))
     page = page.replace("{{main}}", body.strip())
+    if name == "404.html":
+        # Served at any missing path, so links must be root-absolute.
+        page = re.sub(r'(href|src)="(?![/#]|https?:|mailto:)', r'\1="/', page)
     return page
 
 
