@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>{{title}}</title>
+  <meta name="description" content="{{description}}">
+  <meta property="og:title" content="{{title}}">
+  <meta property="og:description" content="{{description}}">
+  <meta property="og:image" content="images/team/sam-katie.jpg">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#8d4657">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400..800&display=swap">
+  <link rel="stylesheet" href="styles.css">
+  <script src="site.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="wrap site-header__bar">
+      <a class="logo" href="index.html" aria-label="SwinGallery home">
+        <img class="logo--light" src="images/logo/wordmark-maroon.svg" alt="" width="150" height="50">
+        <img class="logo--dark" src="images/logo/wordmark-white.svg" alt="" width="150" height="50">
+      </a>
+      <nav class="nav" aria-label="Main">
+        <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-list">
+          <svg class="icon" aria-hidden="true"><use href="icons.svg#menu"/></svg>Menu
+        </button>
+        <ul class="nav__list" id="nav-list">
+{{nav}}
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+{{main}}
+  </main>
+
+{{footer}}
+</body>
+</html>
