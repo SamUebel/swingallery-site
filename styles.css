@@ -355,7 +355,8 @@ body::before {
 .page-hero .sunburst { right: -140px; top: -200px; width: 480px; height: 480px; }
 
 /* ---------- Team ---------- */
-.team { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: var(--space-6); margin: 0; padding: 0; list-style: none; }
+.team { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 300px)); gap: var(--space-6); align-items: start; margin: 0; padding: 0; list-style: none; }
+@media (max-width: 600px) { .team { grid-template-columns: minmax(0, 1fr); } }
 .person {
   display: flex; flex-direction: column; overflow: hidden;
   background: var(--surface-raised); border: 1px solid var(--line);
@@ -372,6 +373,18 @@ body::before {
 .person__role { font-size: 13px; line-height: 16px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-brand); }
 .person__name { font-size: 20px; line-height: 28px; }
 .person__body a { font-size: 15px; }
+.person__bio { margin-top: var(--space-2); border-top: 1px solid var(--line); padding-top: var(--space-2); }
+.person__bio summary {
+  display: flex; align-items: center; min-height: var(--target-min); cursor: pointer;
+  color: var(--text-brand); font-size: 15px; font-weight: 600; list-style: none;
+}
+.person__bio summary::-webkit-details-marker { display: none; }
+.person__bio summary::after { content: "+"; margin-left: auto; font-size: 20px; font-weight: 700; line-height: 1; }
+.person__bio[open] summary::after { content: "\2212"; }
+.person__bio summary:hover { text-decoration: underline; text-underline-offset: 3px; }
+.person__bio p { font-size: 15px; line-height: 24px; color: var(--ink-muted); }
+.person__bio p + p { margin-top: var(--space-3); }
+.person__bio cite { font-style: italic; }
 .crew { display: flex; flex-wrap: wrap; gap: var(--space-2); margin: 0; padding: 0; list-style: none; }
 .crew li { padding: var(--space-2) var(--space-4); background: var(--surface-raised); border: 1px solid var(--line); border-radius: 999px; font-weight: 600; font-size: 15px; }
 
