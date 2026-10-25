@@ -73,3 +73,18 @@
     })
     .catch(function () {});
 })();
+
+// Bio pop-ups on the About page
+(function () {
+  document.querySelectorAll('[data-bio]').forEach(function (btn) {
+    var dialog = document.getElementById(btn.getAttribute('data-bio'));
+    if (!dialog || typeof dialog.showModal !== 'function') return;
+    btn.addEventListener('click', function () { dialog.showModal(); });
+    dialog.querySelector('.bio-dialog__close').addEventListener('click', function () { dialog.close(); });
+    // Close when clicking the dimmed area outside the box
+    dialog.addEventListener('click', function (e) {
+      if (e.target === dialog) dialog.close();
+    });
+    dialog.addEventListener('close', function () { btn.focus(); });
+  });
+})();

@@ -363,7 +363,7 @@ body::before {
   border-radius: var(--radius-arch) var(--radius-arch) var(--radius-lg) var(--radius-lg); box-shadow: var(--shadow-card);
 }
 .person figure { margin: 0; padding: var(--space-3) var(--space-3) 0; }
-.person img, .person__initials {
+.person figure img, .person__initials {
   width: 100%; aspect-ratio: 4 / 5; object-fit: cover;
   border-radius: var(--radius-arch) var(--radius-arch) var(--radius-sm) var(--radius-sm); background: var(--surface-sunken);
 }
@@ -373,27 +373,47 @@ body::before {
 .person__role { font-size: 13px; line-height: 16px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-brand); }
 .person__name { font-size: 20px; line-height: 28px; }
 .person__body a { font-size: 15px; }
-.person__bio { margin-top: var(--space-2); border-top: 1px solid var(--line); padding-top: var(--space-2); }
-.person__bio summary {
-  display: flex; align-items: center; min-height: var(--target-min); cursor: pointer;
-  color: var(--text-brand); font-size: 15px; font-weight: 600; list-style: none;
+.bio-btn {
+  display: inline-flex; align-items: center; min-height: var(--target-min); margin-top: var(--space-1); padding: 0;
+  background: none; border: 0; color: var(--text-brand); font: inherit; font-size: 15px; font-weight: 600; cursor: pointer;
+  text-decoration: underline; text-underline-offset: 3px;
 }
-.person__bio summary::-webkit-details-marker { display: none; }
-.person__bio summary::after { content: "+"; margin-left: auto; font-size: 20px; font-weight: 700; line-height: 1; }
-.person__bio[open] summary::after { content: "\2212"; }
-.person__bio summary:hover { text-decoration: underline; text-underline-offset: 3px; }
-.person__bio p { font-size: 15px; line-height: 24px; color: var(--ink-muted); }
-.person__bio p + p { margin-top: var(--space-3); }
-.person__bio cite { font-style: italic; }
+.bio-btn:hover { text-decoration-thickness: 2px; }
+.crew__card .bio-btn { margin-left: calc(56px + var(--space-3)); }
+html:has(.bio-dialog[open]) { overflow: hidden; }
+.bio-dialog {
+  width: min(560px, calc(100% - 32px)); max-height: min(80vh, 720px); padding: 0; overflow: hidden;
+  background: var(--surface-raised); color: var(--ink); border: 1px solid var(--line); border-radius: var(--radius-lg); box-shadow: var(--shadow-lift);
+}
+.bio-dialog[open] { display: flex; flex-direction: column; }
+.bio-dialog::backdrop { background: rgba(28, 19, 22, 0.6); }
+.bio-dialog__head {
+  display: flex; align-items: center; gap: var(--space-4); padding: var(--space-5);
+  background: var(--brand-maroon); border-bottom: 4px solid var(--brand-gold);
+}
+.bio-dialog__photo { flex: none; width: 72px; height: 72px; border-radius: var(--radius-md); object-fit: cover; border: 2px solid var(--brand-gold); }
+.bio-dialog__photo--initials { display: grid; place-content: center; background: var(--brand-maroon); color: var(--brand-gold); font-size: 24px; font-weight: 800; }
+.bio-dialog__head > div { flex: 1; min-width: 0; }
+.bio-dialog__role { font-size: 13px; line-height: 16px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--brand-gold); }
+.bio-dialog__name { color: var(--on-brand-maroon); font-size: 24px; line-height: 32px; }
+.bio-dialog__close {
+  flex: none; align-self: flex-start; display: grid; place-content: center; width: var(--target-min); height: var(--target-min);
+  background: transparent; color: var(--on-brand-maroon); border: 1px solid rgba(255, 255, 255, 0.5); border-radius: var(--radius-md); cursor: pointer;
+}
+.bio-dialog__close:hover { background: rgba(255, 255, 255, 0.12); }
+.bio-dialog__close:focus-visible { outline-color: var(--brand-gold); }
+.bio-dialog__body { display: grid; gap: var(--space-4); padding: var(--space-5) var(--space-6) var(--space-6); overflow-y: auto; }
+.bio-dialog__body p { font-size: 16px; line-height: 26px; }
+.bio-dialog__body cite { font-style: italic; }
+@media (max-width: 480px) { .bio-dialog__head { padding: var(--space-4); } .bio-dialog__body { padding: var(--space-4) var(--space-5) var(--space-5); } .bio-dialog__photo { width: 56px; height: 56px; } }
 .crew { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(250px, 100%), 1fr)); gap: var(--space-4); align-items: start; margin: 0; padding: 0; list-style: none; }
 .crew__card { min-width: 0; padding: var(--space-4); background: var(--surface-raised); border: 1px solid var(--line); border-radius: var(--radius-lg); }
 .crew__head { display: flex; align-items: center; gap: var(--space-3); }
-.crew__photo { flex: none; width: 56px; height: 56px; border-radius: 50%; object-fit: cover; background: var(--surface-sunken); border: 2px solid var(--brand-gold); }
+.crew__photo { flex: none; width: 56px; height: 56px; border-radius: var(--radius-md); object-fit: cover; background: var(--surface-sunken); border: 2px solid var(--brand-gold); }
 .crew__photo--initials { display: grid; place-content: center; background: var(--brand-maroon); color: var(--brand-gold); font-size: 18px; font-weight: 800; letter-spacing: 0.02em; }
 .crew__text { display: grid; gap: 2px; min-width: 0; }
 .crew__name { font-weight: 600; font-size: 16px; line-height: 22px; }
 .crew__role { font-size: 14px; line-height: 20px; font-weight: 500; color: var(--ink-muted); }
-.crew__card .person__bio { margin-top: var(--space-3); }
 
 .history { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 320px); gap: var(--space-7); align-items: center; }
 .history figure { margin: 0; display: grid; gap: var(--space-2); }
