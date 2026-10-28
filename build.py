@@ -17,6 +17,7 @@ SRC = ROOT / "src"
 NAV = [
     ("home", "index.html", "Home"),
     ("events", "events.html", "Events"),
+    ("smorgasbord", "smorgasbord-2026.html", "Smorgasbord 2026"),
     ("visit", "visit.html", "Getting here"),
     ("about", "about.html", "About us"),
     ("conduct", "code-of-conduct.html", "Code of conduct"),
